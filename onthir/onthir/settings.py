@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'main',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'rest_framework.authtoken'
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React app URL
