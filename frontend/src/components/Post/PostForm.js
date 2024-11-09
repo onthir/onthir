@@ -13,6 +13,7 @@ const PostForm = ({ isUpdate }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [image, setImage] = useState(null); // Base64 string if using image
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -45,9 +46,11 @@ const PostForm = ({ isUpdate }) => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    console.log(e.target.files);
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
+        setSelectedImage(e.target.files[0]);
         setImage(reader.result); // Set base64-encoded image
       };
       reader.readAsDataURL(file);
@@ -57,24 +60,23 @@ const PostForm = ({ isUpdate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
-      title,
-      body,
-      category: selectedCategory,
-      views: 0,  // Or any default value for views if necessary
-      ...(image && { image }) // Only include image if present
-    };
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('body', body);
+    formData.append('category', selectedCategory);
+    if (image) formData.append('image', image); // Append image file if selected
+
 
     try {
       if (isUpdate) {
-        await axios.put(`http://127.0.0.1:8000/posts/${id}/`, data, {
+        await axios.put(`http://127.0.0.1:8000/posts/${id}/`, formData, {
           headers: {
             'Content-Type': 'application/json',
           },
         });
         alert('Post updated successfully');
       } else {
-        await axios.post('http://127.0.0.1:8000/posts/', data, {
+        await axios.post('http://127.0.0.1:8000/posts/', formData, {
           headers: {
             'Content-Type': 'application/json',
           },

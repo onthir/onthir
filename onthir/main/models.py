@@ -15,7 +15,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to='post_images/', null=True, blank=True)
     published_on = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=False)
-    views = models.IntegerField()
+    views = models.IntegerField(default=0)
 
 
     def __str__(self):
