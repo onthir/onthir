@@ -7,8 +7,7 @@ class CategorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Category
-        fields = "__all__"
-
+        fields = ["id", "name"]
 
 class PostSerializer(serializers.ModelSerializer):
     image = Base64ImageField(
@@ -16,15 +15,18 @@ class PostSerializer(serializers.ModelSerializer):
         use_url=True,
         required=False
     )
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+
     class Meta:
         model = Post
         fields = ['id', 'category', 'title', 'body', 'image']
 
-    def get_image_url(self, obj):
-        if obj.image:
-            return obj.image.url
-        return None
-
-
-
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        # Provide a more detailed response for category
+        representation['category'] = {
+            "id": instance.category.id,
+            "name": instance.category.name
+        }
+        return representation
 

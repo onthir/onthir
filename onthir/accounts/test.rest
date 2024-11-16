@@ -1,0 +1,25 @@
+POST http://127.0.0.1:8000/accounts/login
+Content-Type: application/json
+
+{"username": "libek", "password": "Onthir-@500bad"}
+
+###
+
+POST http://127.0.0.1:8000/accounts/signup
+Content-Type: application/json
+
+{"username": "libek", "password": "Onthir-@500bad", "email":"bibek09@outlook.com"}
+
+
+###
+
+GET http://127.0.0.1:8000/accounts/test_token
+Content-Type: application/json
+Authorization: Token b58d7fac71d24147c98f3777f99f5df02a19abc7
+
+{}
+
+
+###
+GET http://127.0.0.1:8000/posts?category_name=Philly
+Content-Type: application/json
