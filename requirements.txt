@@ -4,3 +4,5 @@ djangorestframework_simplejwt==5.3.1
 drf_extra_fields==3.7.0
 django_heroku
 django-cors-headers
+gunicorn
+dj_database_url
