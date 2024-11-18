@@ -1,0 +1,54 @@
+/* Center the post form */
+.post-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-form h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-form label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .post-form input, .post-form button {
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .post-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .post-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .post-form select {
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  

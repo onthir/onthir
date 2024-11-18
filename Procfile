@@ -1,0 +1,1 @@
+web: cd onthir  && gunicorn onthir.wsgi
