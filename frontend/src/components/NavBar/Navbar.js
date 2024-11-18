@@ -1,21 +1,51 @@
 // frontend/src/components/Navbar.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';  // Optional: For custom styling
+import axios from 'axios';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
+
+
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
+
+  useEffect(() => {
+    if (localStorage.getItem('access_token') !== null) {
+       setIsAuth(true); 
+     }
+   }, [isAuth]);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/">Onthir</Link>
+        <Link to="/" onClick={() => setIsOpen(false)}>Onthir</Link>
       </div>
-      <ul className="navbar-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/posts">Posts</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/create-post">Create Post</Link></li> {/* New link to PostForm */}
+      <div className="hamburger" onClick={toggleMenu}>
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </div>
+      <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
+        <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
+      
 
+
+        <li><Link to="/about" onClick={toggleMenu}>About</Link></li>
+        <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
+        {isAuth? <li><Link to="/create-post" onClick={toggleMenu}>Create Post</Link></li> : <></>}
+        {isAuth? <li><Link to="/logout" onClick={toggleMenu}>Logout</Link></li>:
+          <li><Link to="/login" onClick={toggleMenu}>Login</Link></li>
+        }
       </ul>
     </nav>
   );

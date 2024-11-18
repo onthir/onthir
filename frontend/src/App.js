@@ -8,6 +8,9 @@ import ContactPage from './components/ContactPage/ContactPage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PostDetails from './components/Post/PostDetails';
 import PostForm from './components/Post/PostForm';
+import { Login } from './components/Accounts/Login';
+import { Logout } from './components/Accounts/Logout';
+import './App.css';
 
 function App() {
   return (
@@ -21,7 +24,10 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/create-post" element={<PostForm />} /> {/* Route for PostForm */}
         <Route path="/posts/:id/update" element={<PostForm isUpdate />} /> {/* Update route */}
+        <Route path="/login" element={<Login/>} />
+        <Route path="/logout" element={<Logout/>} />
 
+        {/* <Route path="/" element={<Navigate to="/login" />} /> */}
 
       </Routes>
     </Router>

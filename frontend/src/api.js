@@ -19,14 +19,25 @@ export const fetchCategories = async () =>{
 
 
 // function to get posts
-export const fetchPosts = async () => {
+export const fetchPosts = async (categoryId=null, categoryName=null) => {
     try{
-        const response = await axios.get(`${API_URL}/posts/`);
+        let url = `${API_URL}/posts?`;
+
+        if(categoryId){
+            url += `category_id=${categoryId}`;
+        }
+        else if(categoryName){
+            url += `category_name=${categoryName}`;
+        }
+
+        const response = await axios.get(url);
         console.log(response);
-        return response.data;
+        return response;
     }
     catch (error){
         console.error('Error fetching posts: ', error);
         throw error;
     }
 }
+
+

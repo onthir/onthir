@@ -11,10 +11,11 @@ const PostForm = ({ isUpdate }) => {
   const [title, setTitle] = useState('');
   const [body, setContent] = useState('');
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState(0);
   const [image, setImage] = useState(null); // Base64 string if using image
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const token = localStorage.getItem('access_token');
+  
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -32,8 +33,10 @@ const PostForm = ({ isUpdate }) => {
           const { title, body, category, image } = response.data;
           setTitle(title);
           setContent(body);
-          setSelectedCategory(category);
-          setImage(image); // Set base64 string if backend requires it
+          setSelectedCategory(category.id);
+          if (image){
+            setImage(image);
+          } // Set base64 string if backend requires it
         } catch (error) {
           console.error('Error fetching post data:', error);
         }
@@ -63,22 +66,23 @@ const PostForm = ({ isUpdate }) => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('body', body);
-    formData.append('category', selectedCategory);
+    formData.append('category', parseInt(selectedCategory, 10));
     if (image) formData.append('image', image); // Append image file if selected
+
 
 
     try {
       if (isUpdate) {
         await axios.put(`http://127.0.0.1:8000/posts/${id}/`, formData, {
           headers: {
-            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           },
         });
         alert('Post updated successfully');
       } else {
         await axios.post('http://127.0.0.1:8000/posts/', formData, {
           headers: {
-            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           },
         });
         alert('Post created successfully');
@@ -116,9 +120,15 @@ const PostForm = ({ isUpdate }) => {
         </label>
 
         <label>
-          Image:
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-        </label>
+    Image:
+    <input type="file" accept="image/*" onChange={handleImageChange} />
+    {image && (
+        <div className="image-preview">
+            <p>Current Image:</p>
+            <img src={image} alt="Current post" style={{ width: '200px' }} />
+        </div>
+    )}
+</label>
 
         <button type="submit">{isUpdate ? 'Update Post' : 'Create Post'}</button>
       </form>

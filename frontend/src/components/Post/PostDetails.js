@@ -10,14 +10,29 @@ const PostDetails = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const navigate = useNavigate();  // For redirecting after deletion
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState(null); // Retrieve the token stored on login
 
+  useEffect(() => {
+    if(localStorage.getItem('access_token') === null){                   
+      
+  }
+  else{
+   setToken(localStorage.getItem('access_token')); 
+    setLoggedIn(true);
+  }
+  }, []);
 
     // Function to delete the post
     const handleDelete = async () => {
       const confirmDelete = window.confirm("Are you sure you want to delete this post?");
       if (confirmDelete) {
         try {
-          await axios.delete(`http://127.0.0.1:8000/posts/${id}/`);
+          await axios.delete(`http://127.0.0.1:8000/posts/${id}/`, {
+            headers:{
+              'Authorization': `Bearer ${token}`
+            }
+          });
           alert('Post deleted successfully');
           navigate('/');  // Redirect to homepage after deletion
         } catch (error) {
@@ -57,9 +72,12 @@ const PostDetails = () => {
   c     lassName="post-details-body" 
         dangerouslySetInnerHTML={{ __html: post.body }} 
       />
-      <button onClick={handleUpdate} className="update-button">Update Post</button>
-      <button onClick={handleDelete} className={styles.deleteButton}>Delete Post</button>
-
+{loggedIn && (
+  <>
+    <button onClick={handleUpdate} className="update-button">Update Post</button>
+    <button onClick={handleDelete} className={styles.deleteButton}>Delete Post</button>
+  </>
+)}
     </div>
     
   );
