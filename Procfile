@@ -1,1 +1,1 @@
-web: gunicorn onthir.wsgi
+web: gunicorn onthir.wsgi:application
