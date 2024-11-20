@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-      <img src={Logo} alt="Onthir Logo" className="navbar-logo-img" />
+      <Link to="/"><img src={Logo} alt="Onthir Logo" className="navbar-logo-img" /></Link>
       </div>
       <div className="hamburger" onClick={toggleMenu}>
         <span className="bar"></span>

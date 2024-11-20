@@ -11,6 +11,7 @@ import PostForm from './components/Post/PostForm';
 import { Login } from './components/Accounts/Login';
 import { Logout } from './components/Accounts/Logout';
 import './App.css';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         {/* <Route path="/" element={<Navigate to="/login" />} /> */}
 
       </Routes>
+      <Footer/>
     </Router>
   );
 }

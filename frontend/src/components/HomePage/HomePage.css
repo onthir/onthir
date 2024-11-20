@@ -1,41 +1,118 @@
-/* General styles for the page */
-.home-page {
+/* General styles for the banner section */
+.home-banner {
+  height: 100vh; /* Full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full height of the viewport */
   background-color: #121212; /* Dark background */
-  color: #ffffff; /* White text for contrast */
+  color: white;
   text-align: center;
+  padding: 20px; /* Add padding for smaller screens */
 }
 
-/* Container to center the content */
+@media (max-width: 768px) {
+  .home-banner {
+    height: auto; /* Allow the height to adjust naturally */
+    padding: 40px 20px; /* Add padding for smaller screens */
+  }
+}
+
+
+/* Center content inside the banner */
 .home-container {
   max-width: 800px;
   padding: 20px;
+  animation: fadeIn 1.5s ease-in-out; /* Add fade-in animation */
 }
 
 /* Logo styles */
 .home-logo {
-  max-width: 250px; /* Adjust size for responsiveness */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 250px;
+  height: auto;
   margin-bottom: 20px;
 }
 
 /* Main heading */
 .home-heading {
-  font-size: 3rem; /* Big text */
+  font-size: 3rem;
   font-weight: bold;
   margin: 10px 0;
-  color: #e0e0e0; /* Slightly lighter text */
+  color: #e0e0e0;
 }
 
 /* Subheading */
 .home-subheading {
   font-size: 1.5rem;
   font-weight: 300;
-  color: #b0b0b0; /* Slightly muted text */
+  color: #b0b0b0;
   margin-top: 10px;
+}
+
+/* Info Section */
+.info-section {
+  max-width: 100%; /* Limit max width */
+  background-color: white; /* White background */
+  color: #121212; /* Dark text */
+  margin: 20px auto; /* Spacing from the banner */
+  padding: 40px 20px; /* Inner padding */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Left Column: Image */
+.info-image {
+  width: 45%; /* Full width within the column */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded edges for the image */
+  object-fit: cover; /* Scale image without distortion */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-image:hover {
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Optional hover shadow */
+}
+
+/* Right Column: Text and Button */
+.info-heading {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 2rem; /* Big heading */
+  font-weight: bold;
+  color: #121212;
+  margin-bottom: 15px;
+}
+
+.info-subheading {
+  font-family: "Fira Sans", sans-serif;
+
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.info-button {
+  background-color: red;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.info-button:hover {
+  background-color: darkred;
+}
+
+/* Fade-in keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Responsive Design */
@@ -48,47 +125,51 @@
     font-size: 1.2rem;
   }
 
-  .home-logo {
-    max-width: 100px;
+  .info-heading {
+    font-size: 1.8rem;
+  }
+
+  .info-subheading {
+    font-size: 1rem;
+  }
+
+  .info-section {
+    padding: 20px 10px;
   }
 }
 
 
 
 
-.home-container {
-  animation: fadeIn 1.5s ease-in-out; /* Add fade-in animation */
+
+/* Parallax Section */
+.info-section {
+  position: relative;
+  height: 45%; /* Adjust as needed */
+  overflow: hidden;
 }
 
-/* Fade-in keyframes */
-@keyframes fadeIn {
-  from {
-    opacity: 0; /* Start fully transparent */
-    transform: scale(0.9); /* Slightly smaller */
-  }
-  to {
-    opacity: 1; /* Fully visible */
-    transform: scale(1); /* Original size */
-  }
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/images/info.jpg') no-repeat center center;
+  background-size: cover;
+  transform: translateY(0);
+  transition: transform 0.1s ease-in-out;
+  z-index: -1; /* Place it behind content */
 }
 
-/* Logo styling */
-.home-logo {
-  max-width: 250px;
-  height: auto;
-  margin-bottom: 20px;
+.info-content {
+  position: relative;
+  z-index: 1; /* Ensure content is above the background */
+  padding: 40px 20px;
+  text-align: center;
 }
 
-/* Heading */
-.home-heading {
-  font-size: 3rem;
-  margin: 10px 0;
-  color: #e0e0e0;
-}
-
-/* Subheading */
-.home-subheading {
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #b0b0b0;
+/* Add the parallax effect */
+.info-section:hover .parallax-bg {
+  transform: translateY(-50px); /* Moves the background upward */
 }
