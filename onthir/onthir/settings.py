@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1i!l38f*19h_a4z!i8zfu)^y3ub(1ay+9#y5r!2av*mqf_4uep
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['onthir-web-54999b26a967.herokuapp.com', 'www.onthir.com', 'onthir.com', 'https://onthir.com']
+ALLOWED_HOSTS = ['https://onthir-web-54999b26a967.herokuapp.com', 'www.onthir.com', 'onthir.com', 'https://onthir.com']
 
 
 # Application definition
@@ -66,6 +66,11 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "https://onthir.com",  # Your frontend domain
     "https://www.onthir.com",  # Include www version if applicable
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://onthir.com",
+    "https://www.onthir.com",
 ]
 
 # Optional: Allow all headers and methods if necessary
