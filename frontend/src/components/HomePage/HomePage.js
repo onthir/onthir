@@ -29,10 +29,8 @@ const HomePage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const headers = {
-          'Access-Control-Allow-Origin': '*',
-        }
-        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories/', {headers: headers}); 
+
+        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories/'); 
         // Adjust the endpoint to match your API
         setCategories(response.data); // Assume response data is an array of category objects
       } catch (error) {
