@@ -49,46 +49,16 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist'
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",  # React app URL
-#     "http://127.0.0.1:3000",  # Include this if you're accessing via 127.0.0.1
-#     "https://onthir.com",
-#     "www.onthir.com",
-#     "onthir.com",
-#     "onthir-bpu79f482-onthirs-projects.vercel.app",
-#     "onthir.vercel.app"
-# ]
 
-CORS_ALLOW_ALL_ORIGINS = True
-# Comment out or remove CORS_ALLOWED_ORIGINS
-# CORS_ALLOWED_ORIGINS = [
-#     "https://your-frontend-domain.vercel.app",
-# ]
-CORS_ALLOW_METHODS = [
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS',
-]
-
-CORS_ALLOW_HEADERS = [
-    'content-type',
-    'authorization',
-    'x-csrftoken',
-    'x-requested-with',
-]
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 REST_FRAMEWORK = {
