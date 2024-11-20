@@ -1,7 +1,15 @@
 import axios from 'axios';
 
-const API_URL = 'https://onthir-web-54999b26a967.herokuapp.com';
 
+// const API_URL = process.env.REACT_APP_API_URL;
+// console.log("API URL:", API_URL);
+
+// if (process.env.REACT_APP_LOG_LEVEL === "debug") {
+//   console.log("Debugging enabled!");
+// }
+
+
+export const API_URL = process.env.REACT_APP_API_URL;
 
 //function to get categories
 export const fetchCategories = async () =>{

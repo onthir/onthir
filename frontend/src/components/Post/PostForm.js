@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import RichTextEditor from '../RichTextEditor';
 import axios from 'axios';
 import './PostForm.css';
+import { API_URL } from '../../api';
+
 
 const PostForm = ({ isUpdate }) => {
   const { id } = useParams();
@@ -19,7 +21,7 @@ const PostForm = ({ isUpdate }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories/');
+        const response = await axios.get(`${API_URL}/categories/`);
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -29,7 +31,7 @@ const PostForm = ({ isUpdate }) => {
     const fetchPost = async () => {
       if (isUpdate && id) {
         try {
-          const response = await axios.get(`https://onthir-web-54999b26a967.herokuapp.com/posts/${id}/`);
+          const response = await axios.get(`${API_URL}/posts/${id}/`);
           const { title, body, category, image } = response.data;
           setTitle(title);
           setContent(body);
@@ -73,14 +75,14 @@ const PostForm = ({ isUpdate }) => {
 
     try {
       if (isUpdate) {
-        await axios.put(`https://onthir-web-54999b26a967.herokuapp.com/posts/${id}/`, formData, {
+        await axios.put(`${API_URL}/posts/${id}/`, formData, {
           headers: {
             'Authorization': `Bearer ${token}`
           },
         });
         alert('Post updated successfully');
       } else {
-        await axios.post('https://onthir-web-54999b26a967.herokuapp.com/posts/', formData, {
+        await axios.post(`${API_URL}/posts/`, formData, {
           headers: {
             'Authorization': `Bearer ${token}`
           },

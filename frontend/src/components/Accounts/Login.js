@@ -4,7 +4,7 @@ import {useState} from "react";
 import './Account.css';
 import {FormProps} from 'antd';
 import {Button, Checkbox, Form, Input} from 'antd';
-
+import { API_URL } from "../../api";
 
 // Define the Login function.
 export const Login = () => {
@@ -19,7 +19,7 @@ export const Login = () => {
                };
           // Create the POST requuest
           const { data } = await axios.post(
-            'https://onthir-web-54999b26a967.herokuapp.com/accounts/token/',
+            `${API_URL}/accounts/token/`,
             user,
      
           );

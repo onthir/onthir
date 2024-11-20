@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from './PostDetails.module.css';  // Import CSS module
 import { useNavigate } from 'react-router-dom';
-
+import { API_URL } from '../../api';
 
 const PostDetails = () => {
   const { id } = useParams();
@@ -28,7 +28,7 @@ const PostDetails = () => {
       const confirmDelete = window.confirm("Are you sure you want to delete this post?");
       if (confirmDelete) {
         try {
-          await axios.delete(`https://onthir-web-54999b26a967.herokuapp.com/posts/${id}/`, {
+          await axios.delete(`${API_URL}/posts/${id}/`, {
             headers:{
               'Authorization': `Bearer ${token}`
             }
@@ -49,7 +49,7 @@ const PostDetails = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`https://onthir-web-54999b26a967.herokuapp.com/posts/${id}/`);
+        const response = await axios.get(`${API_URL}/posts/${id}/`);
         setPost(response.data);
       } catch (error) {
         console.error('Error fetching post details:', error);
@@ -65,7 +65,7 @@ const PostDetails = () => {
       <h1 className={styles.postTitle}>{post.title}</h1>
       {post.image && (
         <div className={styles.postImage}>
-          <img src={`https://onthir-web-54999b26a967.herokuapp.com${post.image}`} alt={post.title} />
+          <img src={`${API_URL}${post.image}`} alt={post.title} />
         </div>
       )}
       <div 

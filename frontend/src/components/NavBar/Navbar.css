@@ -4,11 +4,26 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #333;
+  background-color: #000000;
   color: #fff;
   position: relative;
   z-index: 2;
 }
+
+.navbar-logo-img {
+  max-height: 50px;
+  width: 50px;
+  object-fit: contain;
+  margin: 5px 10px;
+  border: 2px solid white;
+}
+
+@media (max-width: 768px) {
+  .navbar-logo-img {
+    max-height: 30px; /* Smaller logo for smaller screens */
+  }
+}
+
 
 .navbar-logo a {
   color: #fff;
@@ -32,19 +47,51 @@
 
 .navbar-links {
   list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  gap: 1.5rem;
+  gap: 15px; /* Adjust gap between links */
 }
 
-.navbar-links a {
-  color: #fff;
+.navbar-links li {
+  position: relative;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.navbar-links li a {
   text-decoration: none;
-  font-size: 1rem;
+  color: white; /* Default text color */
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
 }
 
-.navbar-links a:hover {
-  color: #ddd;
+/* Pseudo-element for the parallelogram effect */
+.navbar-links li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d84240; /* Hover background color */
+  transform: skew(-20deg) scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  z-index: 0;
 }
+
+/* Hover effect */
+.navbar-links li:hover::before {
+  transform: skew(-20deg) scaleX(1);
+  transform-origin: left;
+}
+
+.navbar-links li:hover a {
+  color: white; /* Text color on hover */
+}
+
 
 /* Responsive styles */
 @media (max-width: 768px) {

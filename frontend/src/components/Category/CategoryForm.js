@@ -1,6 +1,8 @@
 // src/components/CategoryForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_URL } from '../../api';
+
 
 const CategoryForm = ({ onCategoryAdded }) => {
   const [name, setName] = useState('');
@@ -8,7 +10,7 @@ const CategoryForm = ({ onCategoryAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://onthir-web-54999b26a967.herokuapp.com/categories/', { name });
+      const response = await axios.post(`${API_URL}/categories/`, { name });
       onCategoryAdded(response.data);  // Callback to update the category list after adding
       setName('');  // Reset the form
     } catch (error) {

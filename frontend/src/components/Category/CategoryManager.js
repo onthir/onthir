@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CategoryForm from './CategoryForm';
 import CategoryList from './CategoryList';
+import { API_URL } from '../../api';
 
 const CategoryManager = () => {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,7 @@ const CategoryManager = () => {
     const fetchCategories = async () => {
       try {
 
-        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories/');
+        const response = await axios.get(`${API_URL}/categories/`);
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);

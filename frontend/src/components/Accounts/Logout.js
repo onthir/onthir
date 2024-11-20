@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import axios from "axios";
-
+import { API_URL } from "../../api";
 export const Logout = () => {
     useEffect(() => {
         (async () => {
@@ -8,7 +8,7 @@ export const Logout = () => {
                 const refresh_token = localStorage.getItem('refresh_token');
                 
                 await axios.post(
-                    'https://onthir-web-54999b26a967.herokuapp.com/accounts/logout/',
+                    `${API_URL}/accounts/logout/`,
                     { refresh_token },
                     { headers: { 'Content-Type': 'application/json' } }
                 );

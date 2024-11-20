@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';  // Optional: For custom styling
 import axios from 'axios';
+import Logo from '../../assets/images/Logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/" onClick={() => setIsOpen(false)}>Onthir</Link>
+      <img src={Logo} alt="Onthir Logo" className="navbar-logo-img" />
       </div>
       <div className="hamburger" onClick={toggleMenu}>
         <span className="bar"></span>
@@ -39,7 +40,7 @@ const Navbar = () => {
         <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
       
 
-
+        <li><Link to="/posts" onClick={toggleMenu}>Blog</Link></li>
         <li><Link to="/about" onClick={toggleMenu}>About</Link></li>
         <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
         {isAuth? <li><Link to="/create-post" onClick={toggleMenu}>Create Post</Link></li> : <></>}
