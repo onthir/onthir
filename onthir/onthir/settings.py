@@ -50,6 +50,9 @@ INSTALLED_APPS = [
 ]
 
 
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -64,14 +67,15 @@ MIDDLEWARE = [
 
 # Allow your frontend domain
 CORS_ALLOWED_ORIGINS = [
-    "https://onthir.com",  # Your frontend domain
-    "https://www.onthir.com",  # Include www version if applicable
+    "https://onthir.com",
+    "https://www.onthir.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://onthir.com",
     "https://www.onthir.com",
 ]
+
 
 # Optional: Allow all headers and methods if necessary
 CORS_ALLOW_HEADERS = [
