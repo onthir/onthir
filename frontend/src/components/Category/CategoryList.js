@@ -8,7 +8,10 @@ const CategoryList = ({ onSelectCategory }) => {
     // Fetch categories from the backend
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories/');
+        const headers = {
+          'Access-Control-Allow-Origin': '*',
+        }
+        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories/', {headers : headers});
         setCategories(response.data);  // Set categories if the response is successful
       } catch (error) {
         console.error('Error fetching categories:', error);
