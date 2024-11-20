@@ -21,7 +21,7 @@ const HomePage = () => {
         />
         <h1 className="home-heading">Onthir</h1>
         <p className="home-subheading">
-          Empowering Your Future Through Technology
+          Empowering Self-Expression and Connection Throught The Art of Creativity and Innovation
         </p>
       </div>
     </div>
