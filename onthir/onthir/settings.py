@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1i!l38f*19h_a4z!i8zfu)^y3ub(1ay+9#y5r!2av*mqf_4uep
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['onthir-web-54999b26a967.herokuapp.com', 'www.onthir.com', 'onthir.com']
+ALLOWED_HOSTS = ['onthir-web-54999b26a967.herokuapp.com', 'www.onthir.com', 'onthir.com', 'https://onthir.com']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
         'main',
     'accounts',
-
+    'corsheaders',
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
@@ -52,6 +52,9 @@ INSTALLED_APPS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React app URL
     "http://127.0.0.1:3000",  # Include this if you're accessing via 127.0.0.1
+    "https://onthir.com",
+    "www.onthir.com",
+    "onthir.com"
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -72,7 +75,7 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 MIDDLEWARE = [
-            'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
