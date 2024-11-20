@@ -73,14 +73,14 @@ const PostForm = ({ isUpdate }) => {
 
     try {
       if (isUpdate) {
-        await axios.put(`http://127.0.0.1:8000/posts/${id}/`, formData, {
+        await axios.put(`https://onthir-web-54999b26a967.herokuapp.com/posts/${id}/`, formData, {
           headers: {
             'Authorization': `Bearer ${token}`
           },
         });
         alert('Post updated successfully');
       } else {
-        await axios.post('http://127.0.0.1:8000/posts/', formData, {
+        await axios.post('https://onthir-web-54999b26a967.herokuapp.com/posts/', formData, {
           headers: {
             'Authorization': `Bearer ${token}`
           },

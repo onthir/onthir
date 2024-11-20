@@ -32,7 +32,8 @@ const HomePage = () => {
         const headers = {
           'Access-Control-Allow-Origin': '*',
         }
-        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories', {headers: headers}); // Adjust the endpoint to match your API
+        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories/', {headers: headers}); 
+        // Adjust the endpoint to match your API
         setCategories(response.data); // Assume response data is an array of category objects
       } catch (error) {
         console.error('Error fetching categories:', error);
