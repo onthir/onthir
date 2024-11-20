@@ -8,7 +8,7 @@ export const Logout = () => {
                 const refresh_token = localStorage.getItem('refresh_token');
                 
                 await axios.post(
-                    'http://localhost:8000/accounts/logout/',
+                    'https://onthir-web-54999b26a967.herokuapp.com/accounts/logout/',
                     { refresh_token },
                     { headers: { 'Content-Type': 'application/json' } }
                 );

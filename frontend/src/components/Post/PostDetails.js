@@ -28,7 +28,7 @@ const PostDetails = () => {
       const confirmDelete = window.confirm("Are you sure you want to delete this post?");
       if (confirmDelete) {
         try {
-          await axios.delete(`http://127.0.0.1:8000/posts/${id}/`, {
+          await axios.delete(`https://onthir-web-54999b26a967.herokuapp.com/posts/${id}/`, {
             headers:{
               'Authorization': `Bearer ${token}`
             }
@@ -49,7 +49,7 @@ const PostDetails = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/posts/${id}/`);
+        const response = await axios.get(`https://onthir-web-54999b26a967.herokuapp.com/posts/${id}/`);
         setPost(response.data);
       } catch (error) {
         console.error('Error fetching post details:', error);
@@ -65,7 +65,7 @@ const PostDetails = () => {
       <h1 className={styles.postTitle}>{post.title}</h1>
       {post.image && (
         <div className={styles.postImage}>
-          <img src={`http://127.0.0.1:8000${post.image}`} alt={post.title} />
+          <img src={`https://onthir-web-54999b26a967.herokuapp.com${post.image}`} alt={post.title} />
         </div>
       )}
       <div 

@@ -8,7 +8,7 @@ const CategoryForm = ({ onCategoryAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/categories/', { name });
+      const response = await axios.post('https://onthir-web-54999b26a967.herokuapp.com/categories/', { name });
       onCategoryAdded(response.data);  // Callback to update the category list after adding
       setName('');  // Reset the form
     } catch (error) {

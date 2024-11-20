@@ -19,7 +19,7 @@ const PostForm = ({ isUpdate }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/categories/');
+        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories/');
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -29,7 +29,7 @@ const PostForm = ({ isUpdate }) => {
     const fetchPost = async () => {
       if (isUpdate && id) {
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/posts/${id}/`);
+          const response = await axios.get(`https://onthir-web-54999b26a967.herokuapp.com/posts/${id}/`);
           const { title, body, category, image } = response.data;
           setTitle(title);
           setContent(body);

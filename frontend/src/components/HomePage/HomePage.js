@@ -29,7 +29,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/categories'); // Adjust the endpoint to match your API
+        const response = await axios.get('https://onthir-web-54999b26a967.herokuapp.com/categories'); // Adjust the endpoint to match your API
         setCategories(response.data); // Assume response data is an array of category objects
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -79,7 +79,7 @@ const HomePage = () => {
           </div>
           {post.image && (
             <div className="post-image">
-              <img src={`http://localhost:8000${post.image}`} alt={post.title} />
+              <img src={`https://onthir-web-54999b26a967.herokuapp.com${post.image}`} alt={post.title} />
             </div>
           )}
 

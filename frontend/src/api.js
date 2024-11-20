@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/';
+const API_URL = 'https://onthir-web-54999b26a967.herokuapp.com/';
 
 
 //function to get categories

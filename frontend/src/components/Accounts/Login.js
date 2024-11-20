@@ -19,7 +19,7 @@ export const Login = () => {
                };
           // Create the POST requuest
           const { data } = await axios.post(
-            'http://localhost:8000/accounts/token/',
+            'https://onthir-web-54999b26a967.herokuapp.com/accounts/token/',
             user,
      
           );
