@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -61,16 +62,39 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# Allow your frontend domain
+CORS_ALLOWED_ORIGINS = [
+    "https://onthir.com",  # Your frontend domain
+    "https://www.onthir.com",  # Include www version if applicable
+]
+
+# Optional: Allow all headers and methods if necessary
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+    # Add other headers if required
+]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
+    # Add other methods if required
+]
+
+# Optional: If you're using cookies for authentication
+CORS_ALLOW_CREDENTIALS = True
+
 REST_FRAMEWORK = {
      'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
       ],
 }
 
-CORS_ORIGIN_WHITELIST = [
-     'https://onthir.com',
-     'onthir.com'
-]
+
+
+
 
 ROOT_URLCONF = 'onthir.urls'
 
