@@ -67,6 +67,11 @@ REST_FRAMEWORK = {
       ],
 }
 
+CORS_ORIGIN_WHITELIST = [
+     'https://onthir.com',
+     'onthir.com'
+]
+
 ROOT_URLCONF = 'onthir.urls'
 
 TEMPLATES = [
