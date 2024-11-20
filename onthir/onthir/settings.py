@@ -49,18 +49,21 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist'
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React app URL
-    "http://127.0.0.1:3000",  # Include this if you're accessing via 127.0.0.1
-    "https://onthir.com",
-    "www.onthir.com",
-    "onthir.com",
-    "onthir-bpu79f482-onthirs-projects.vercel.app",
-    "onthir.vercel.app"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # React app URL
+#     "http://127.0.0.1:3000",  # Include this if you're accessing via 127.0.0.1
+#     "https://onthir.com",
+#     "www.onthir.com",
+#     "onthir.com",
+#     "onthir-bpu79f482-onthirs-projects.vercel.app",
+#     "onthir.vercel.app"
+# ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-
+CORS_ALLOW_ALL_ORIGINS = True
+# Comment out or remove CORS_ALLOWED_ORIGINS
+# CORS_ALLOWED_ORIGINS = [
+#     "https://your-frontend-domain.vercel.app",
+# ]
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',
