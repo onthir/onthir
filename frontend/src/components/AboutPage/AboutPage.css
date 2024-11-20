@@ -2,7 +2,7 @@
 .about-page {
     font-family: "Fira Sans", sans-serif;
     color: #121212;
-    background-color: black; /* Light background */
+    background-color: white; /* Light background */
     padding: 40px 20px;
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@
   .about-container {
     max-width: 800px; /* Restricts content width */
     width: 100%; /* Ensures full width on small screens */
-    background-color: white; /* Container background */
+    background-color: #f9f9f9; /* Container background */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     padding: 40px; /* Inner padding */
