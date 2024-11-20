@@ -54,7 +54,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",  # Include this if you're accessing via 127.0.0.1
     "https://onthir.com",
     "www.onthir.com",
-    "onthir.com"
+    "onthir.com",
+    "onthir-bpu79f482-onthirs-projects.vercel.app",
+    "onthir.vercel.app"
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
