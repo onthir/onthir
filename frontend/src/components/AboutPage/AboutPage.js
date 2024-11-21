@@ -1,9 +1,15 @@
 import React from "react";
 import "./AboutPage.css";
+import { Helmet } from "react-helmet";
+
 
 const AboutPage = () => {
   return (
     <div className="about-page">
+            <Helmet>
+      <title>About Us | Onthir</title>
+          <meta name="description" content="At Onthir, we are dedicated to fostering meaningful connections and self-expression through the power of creativity and authenticity. Our mission is to provide a platform where individuals can share their stories, explore their emotions, and celebrate their unique journeys." />
+      </Helmet>
       <div className="about-container">
         {/* Page Title */}
         <div className="about-header">

@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Account.css";
 import { API_URL } from "../../api";
 import Logo from "../../assets/images/Logo.png";
-
+import { Helmet } from "react-helmet";
 // Define the Login function
 export const Login = () => {
   const [username, setUsername] = useState('');
@@ -35,6 +35,10 @@ export const Login = () => {
 
   return (
     <div className="Auth-form-container">
+                  <Helmet>
+      <title>Login | Onthir</title>
+          <meta name="description" content="Login to your account." />
+      </Helmet>
       <form className="Auth-form" onSubmit={submit}>
         <div className="Auth-form-logo">
           <img src={Logo} alt="Your Logo" />

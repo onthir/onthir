@@ -3,9 +3,17 @@ import { Row, Col, Button } from "antd";
 import "./HomePage.css";
 import Logo from "../../assets/images/Logo.png";
 import Info from "../../assets/images/info.jpg";
+import { Helmet } from "react-helmet";
+
+
 const HomePage = () => {
   return (
     <div>
+
+      <Helmet>
+      <title>Home | Onthir</title>
+          <meta name="description" content="Discover a platform dedicated to empowering creativity and self-expression. We inspire artists and innovators to connect, grow, and turn their unique ideas into impactful art. Join us to fuel your passion and make your creativity thrive." />
+      </Helmet>
       {/* Banner Section */}
       <div className="home-banner">
         <div className="home-container">

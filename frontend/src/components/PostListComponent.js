@@ -6,7 +6,7 @@ import { fetchPosts } from '../api';
 import { Link } from 'react-router-dom';
 import {Button, Space, Typography} from "antd";
 import { API_URL } from '../api';
-
+import { Helmet } from 'react-helmet';
 
 const PostListComponent = () => {
   const [posts, setPosts] = useState([]);
@@ -48,6 +48,10 @@ const PostListComponent = () => {
 
   return (
     <div className="homepage">
+                  <Helmet>
+      <title>Blog Posts | Onthir</title>
+          <meta name="description" content="Read through our different blog posts on Psychology, Philosophy, Art, Creativity, and much more." />
+      </Helmet>
       <div className="categories-box">
         {categories.map((category) => (
           <a 

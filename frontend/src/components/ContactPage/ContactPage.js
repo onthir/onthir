@@ -3,6 +3,7 @@ import { Form, Input, Button } from "antd";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ContactPage.css";
+import { Helmet } from "react-helmet";
 
 const ContactPage = () => {
   const onFinish = (values) => {
@@ -22,6 +23,10 @@ const ContactPage = () => {
 
   return (
     <div className="contact-page">
+                  <Helmet>
+      <title>Contact Us | Onthir</title>
+          <meta name="description" content="Feel Free to contact us and share your creative thoughts." />
+      </Helmet>
       <div className="contact-container">
         {/* Page Title */}
         <div className="contact-header">
