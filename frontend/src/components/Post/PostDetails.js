@@ -83,7 +83,7 @@ const PostDetails = () => {
 )}
 <hr/>
 
-    return <Comments website-id={12206} page-id={1} />;
+    return <Comments website-id={12206} page-id={post.id} />;
 
     </div>
     
