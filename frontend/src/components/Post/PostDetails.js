@@ -81,7 +81,7 @@ const PostDetails = () => {
     <button onClick={handleDelete} className={styles.deleteButton}>Delete Post</button>
   </>
 )}
-
+<hr/>
 
     return <Comments website-id={12206} page-id={1} />;
 
