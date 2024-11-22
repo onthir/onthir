@@ -9,7 +9,7 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  text-align: left;
 }
 
 .postTitle {
@@ -31,6 +31,9 @@
   color: #333;
   text-align: left;
   width: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 
@@ -44,4 +47,8 @@
 
 .deleteButton:hover{
   background-color: rgb(202, 102, 102);
+}
+
+.post-details-body{
+  text-align: left !important;
 }

@@ -5,6 +5,9 @@ import axios from 'axios';
 import styles from './PostDetails.module.css';  // Import CSS module
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../api';
+import { Comments } from "@hyvor/hyvor-talk-react";
+
+
 
 const PostDetails = () => {
   const { id } = useParams();
@@ -69,7 +72,7 @@ const PostDetails = () => {
         </div>
       )}
       <div 
-  c     lassName="post-details-body" 
+  className="post-details-body" 
         dangerouslySetInnerHTML={{ __html: post.body }} 
       />
 {loggedIn && (
@@ -78,6 +81,10 @@ const PostDetails = () => {
     <button onClick={handleDelete} className={styles.deleteButton}>Delete Post</button>
   </>
 )}
+
+
+    return <Comments website-id={12206} page-id={1} />;
+
     </div>
     
   );
