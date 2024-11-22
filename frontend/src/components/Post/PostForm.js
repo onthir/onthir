@@ -137,7 +137,7 @@ const PostForm = ({ isUpdate }) => {
 {/* image url */}
 <label>
           Image URL (if any):
-          <input type="text" value={image_url} onChange={(e) => setImageURL(e.target.value)} required />
+          <input type="text" value={image_url} onChange={(e) => setImageURL(e.target.value)}  />
         </label>
 
         <button type="submit">{isUpdate ? 'Update Post' : 'Create Post'}</button>

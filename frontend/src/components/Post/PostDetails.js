@@ -6,7 +6,7 @@ import styles from './PostDetails.module.css';  // Import CSS module
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../api';
 import { Comments } from "@hyvor/hyvor-talk-react";
-
+import { Helmet } from 'react-helmet';
 
 
 const PostDetails = () => {
@@ -64,7 +64,13 @@ const PostDetails = () => {
   if (!post) return <div>Loading...</div>;
 
   return (
+    
     <div className={styles.postCard}>
+      
+      <Helmet>
+      <title>{post.title} | Onthir</title>
+          <meta name="description" content={post.title} />
+      </Helmet>
       <h1 className={styles.postTitle}>{post.title}</h1>
       {post.image || post.image_url ? (
   <div className={styles.postImage}>

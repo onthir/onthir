@@ -85,13 +85,17 @@ const PostListComponent = () => {
             </div>
           )}
           </div>
-          {post.image && (
-            <div className="post-image">
-              <img src={`${API_URL}${post.image}`} alt={post.title} />
-            </div>
-          )}
+          {(post.image || post.image_url) && (
+  <div className="post-image">
+    <img 
+      src={post.image ? `${API_URL}${post.image}` : post.image_url} 
+      alt={post.title} 
+    />
+  </div>
+)}
 
-        </div>
+
+        </div> 
       ))}
       {filteredCategory && (
         <div className="filtered-category">
