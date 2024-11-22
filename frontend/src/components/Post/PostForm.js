@@ -8,7 +8,7 @@ import { API_URL } from '../../api';
 
 
 const PostForm = ({ isUpdate }) => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [body, setContent] = useState('');
@@ -17,6 +17,7 @@ const PostForm = ({ isUpdate }) => {
   const [image, setImage] = useState(null); // Base64 string if using image
   const [selectedImage, setSelectedImage] = useState(null);
   const token = localStorage.getItem('access_token');
+  const [image_url, setImageURL] = useState('');
   
   useEffect(() => {
     const fetchCategories = async () => {
@@ -29,9 +30,9 @@ const PostForm = ({ isUpdate }) => {
     };
 
     const fetchPost = async () => {
-      if (isUpdate && id) {
+      if (isUpdate && slug) {
         try {
-          const response = await axios.get(`${API_URL}/posts/${id}/`);
+          const response = await axios.get(`${API_URL}/posts/${slug}/`);
           const { title, body, category, image } = response.data;
           setTitle(title);
           setContent(body);
@@ -47,7 +48,7 @@ const PostForm = ({ isUpdate }) => {
 
     fetchCategories();
     fetchPost();
-  }, [isUpdate, id]);
+  }, [isUpdate, slug]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -69,13 +70,14 @@ const PostForm = ({ isUpdate }) => {
     formData.append('title', title);
     formData.append('body', body);
     formData.append('category', parseInt(selectedCategory, 10));
+    formData.append('image_url', image_url);
     if (image) formData.append('image', image); // Append image file if selected
 
 
 
     try {
       if (isUpdate) {
-        await axios.put(`${API_URL}/posts/${id}/`, formData, {
+        await axios.put(`${API_URL}/posts/${slug}/`, formData, {
           headers: {
             'Authorization': `Bearer ${token}`
           },
@@ -89,7 +91,7 @@ const PostForm = ({ isUpdate }) => {
         });
         alert('Post created successfully');
       }
-      navigate('/');
+      navigate('/posts/');
     } catch (error) {
       console.error('Error submitting post:', error);
     }
@@ -131,6 +133,12 @@ const PostForm = ({ isUpdate }) => {
         </div>
     )}
 </label>
+
+{/* image url */}
+<label>
+          Image URL (if any):
+          <input type="text" value={image_url} onChange={(e) => setImageURL(e.target.value)} required />
+        </label>
 
         <button type="submit">{isUpdate ? 'Update Post' : 'Create Post'}</button>
       </form>

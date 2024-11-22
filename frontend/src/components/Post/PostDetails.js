@@ -10,7 +10,7 @@ import { Comments } from "@hyvor/hyvor-talk-react";
 
 
 const PostDetails = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [post, setPost] = useState(null);
   const navigate = useNavigate();  // For redirecting after deletion
   const [loggedIn, setLoggedIn] = useState(false);
@@ -31,7 +31,7 @@ const PostDetails = () => {
       const confirmDelete = window.confirm("Are you sure you want to delete this post?");
       if (confirmDelete) {
         try {
-          await axios.delete(`${API_URL}/posts/${id}/`, {
+          await axios.delete(`${API_URL}/posts/${slug}/`, {
             headers:{
               'Authorization': `Bearer ${token}`
             }
@@ -46,31 +46,34 @@ const PostDetails = () => {
 
     // update posts
     const handleUpdate = () => {
-      navigate(`/posts/${id}/update`);
+      navigate(`/posts/${slug}/update`);
     };
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`${API_URL}/posts/${id}/`);
+        const response = await axios.get(`${API_URL}/posts/${slug}/`);
         setPost(response.data);
       } catch (error) {
         console.error('Error fetching post details:', error);
       }
     };
     fetchPost();
-  }, [id]);
+  }, [slug]);
 
   if (!post) return <div>Loading...</div>;
 
   return (
     <div className={styles.postCard}>
       <h1 className={styles.postTitle}>{post.title}</h1>
-      {post.image && (
-        <div className={styles.postImage}>
-          <img src={`${API_URL}${post.image}`} alt={post.title} />
-        </div>
-      )}
+      {post.image || post.image_url ? (
+  <div className={styles.postImage}>
+    <img 
+      src={post.image ? `${API_URL}${post.image}` : post.image_url} 
+      alt={post.title} 
+    />
+  </div>
+) : null}
       <div 
   className="post-details-body" 
         dangerouslySetInnerHTML={{ __html: post.body }} 
@@ -83,7 +86,7 @@ const PostDetails = () => {
 )}
 <hr/>
 
-    return <Comments website-id={12206} page-id={post.id} />;
+    return <Comments website-id={12206} page-id={post.id} />
 
     </div>
     

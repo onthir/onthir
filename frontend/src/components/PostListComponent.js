@@ -63,7 +63,7 @@ const PostListComponent = () => {
       </div>
 
       {posts.map((post) => (
-        <div key={post.id} className="post">
+        <div key={post.slug} className="post">
           <div className="post-content">
             <h1 className="post-title">{post.title}</h1>
 
@@ -75,7 +75,7 @@ const PostListComponent = () => {
 />
 
 
-            <Link href={`/posts/${post.id}`} className="read-more">Read more</Link>
+            <Link href={`/posts/${post.slug}`} className="read-more">Read more</Link>
             {post.category && (
             <div
               className="category-link"

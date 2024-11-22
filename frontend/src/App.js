@@ -19,12 +19,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/posts/:id" element={<PostDetails />} />  {/* Post details route */}
+        <Route path="/posts/:slug" element={<PostDetails />} />  {/* Post details route */}
         <Route path="/about" element={<AboutPage />} />
         <Route path="/posts" element={<PostListComponent />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/create-post" element={<PostForm />} /> {/* Route for PostForm */}
-        <Route path="/posts/:id/update" element={<PostForm isUpdate />} /> {/* Update route */}
+        <Route path="/posts/:slug/update" element={<PostForm isUpdate />} /> {/* Update route */}
         <Route path="/login" element={<Login/>} />
         <Route path="/logout" element={<Logout/>} />
 
